@@ -6,7 +6,7 @@ import random
 
 class NSGA2Utils(object):
     
-    def __init__(self, problem, num_of_individuals, mutation_strength=0.1, num_of_genes_to_mutate=5, num_of_tour_particips=2):
+    def __init__(self, problem, num_of_individuals, mutation_strength=0.2, num_of_genes_to_mutate=5, num_of_tour_particips=2):
         
         self.problem = problem
         self.num_of_individuals = num_of_individuals
