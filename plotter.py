@@ -1,15 +1,15 @@
 import os
 import matplotlib.pyplot as pyplot
 from math import sqrt
-from utils import seq
 
 class Plotter():
     def plotPopulationBestFront(self, population, generationNumber):
-        directory = 'plots'
-        filename = "{}/generation{}.png".format(directory, str(generationNumber))
-        self.createDirectoryIfNotExists(directory)
-        computedParetoFront = population.fronts[0]
-        self.plotFront(computedParetoFront, filename)
+        if generationNumber % 10 == 0:
+            directory = 'plots'
+            filename = "{}/generation{}.png".format(directory, str(generationNumber))
+            self.createDirectoryIfNotExists(directory)
+            computedParetoFront = population.fronts[0]
+            self.plotFront(computedParetoFront, filename)
 
     def createDirectoryIfNotExists(self, directory):
         if not os.path.exists(directory):
@@ -29,3 +29,10 @@ class Plotter():
         axes.set_title('Computed Pareto front')
         pyplot.savefig(filename)
         pyplot.close(figure)
+
+def seq(start, stop, step=1):
+    n = int(round((stop - start)/float(step)))
+    if n > 1:
+        return([start + step*i for i in range(n+1)])
+    else:
+        return([])

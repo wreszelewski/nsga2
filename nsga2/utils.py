@@ -6,7 +6,7 @@ import random
 
 class NSGA2Utils(object):
     
-    def __init__(self, problem, num_of_individuals, mutation_strength=0.1, num_of_genes_to_mutate=10, num_of_tour_particips=5):
+    def __init__(self, problem, num_of_individuals, mutation_strength=0.5, num_of_genes_to_mutate=20, num_of_tour_particips=2):
         
         self.problem = problem
         self.num_of_individuals = num_of_individuals
@@ -79,23 +79,29 @@ class NSGA2Utils(object):
             parent2 = parent1
             while parent1.features == parent2.features:
                 parent2 = self.__tournament(population)
-            child = self.__crossover(parent1, parent2)
-            self.__mutate(child)
-            self.problem.calculate_objectives(child)
-            children.append(child)
+            child1, child2 = self.__crossover(parent1, parent2)
+            self.__mutate(child1)
+            self.__mutate(child2)
+            self.problem.calculate_objectives(child1)
+            self.problem.calculate_objectives(child2)
+            children.append(child1)
+            children.append(child2)
 
         return children
     
     def __crossover(self, individual1, individual2):
-        child = self.problem.generateIndividual()
-        genes_indexes = range(len(child.features))
-        half_genes_indexes = random.sample(genes_indexes, len(child.features)/2)
+        child1 = self.problem.generateIndividual()
+        child2 = self.problem.generateIndividual()
+        genes_indexes = range(len(child1.features))
+        half_genes_indexes = random.sample(genes_indexes, 1)
         for i in genes_indexes:
             if i in half_genes_indexes:
-                child.features[i] = (individual1.features[i] + individual2.features[i])/2
+                child1.features[i] = individual2.features[i]
+                child2.features[i] = individual1.features[i]
             else:
-                child.features[i] = individual1.features[i]
-        return child
+                child1.features[i] = individual1.features[i]
+                child2.features[i] = individual2.features[i]
+        return child1, child2
 
     def __mutate(self, child):
         genes_to_mutate = random.sample(range(0, len(child.features)), self.number_of_genes_to_mutate)
