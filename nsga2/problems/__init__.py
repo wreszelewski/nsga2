@@ -4,8 +4,8 @@ class Problem(object):
     
 
     def __init__(self):
-        self.max_objective = None
-        self.min_objecive = None
+        self.max_objectives = None
+        self.min_objecives = None
         self.problem_type = None
         
     def generateIndividual(self):
@@ -16,6 +16,3 @@ class Problem(object):
         
         raise NotImplementedError
         
-    def fill_individual(self, individual):
-        
-        raise NotImplementedError
