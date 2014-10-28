@@ -25,8 +25,7 @@ class Plotter():
         computed_f2 = map(lambda individual: individual.objectives[1], front)
         axes.plot(computed_f1, computed_f2, 'g.')
 
-        perfect_pareto_front_f1 = seq(0, 1, 0.02)
-        perfect_pareto_front_f2 = self.problem.perfect_pareto_front_f2(perfect_pareto_front_f1)
+        perfect_pareto_front_f1, perfect_pareto_front_f2 = self.problem.perfect_pareto_front()
         axes.plot(perfect_pareto_front_f1, perfect_pareto_front_f2, 'r.')
 
         axes.set_xlabel('f1')
@@ -35,9 +34,4 @@ class Plotter():
         pyplot.savefig(filename)
         pyplot.close(figure)
 
-def seq(start, stop, step=1):
-    n = int(round((stop - start)/float(step)))
-    if n > 1:
-        return([start + step*i for i in range(n+1)])
-    else:
-        return([])
+

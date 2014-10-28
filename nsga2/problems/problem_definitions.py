@@ -9,5 +9,6 @@ class ProblemDefinitions():
     def f2(self, individual):
         raise NotImplementedError
 
-    def perfect_pareto_front_f2(self, perfect_pareto_front_f1):
+    def perfect_pareto_front(self):
         raise NotImplementedError
+

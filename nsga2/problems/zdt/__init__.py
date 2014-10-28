@@ -12,7 +12,7 @@ class ZDT(Problem):
         self.max_objectives = [None, None]
         self.min_objectives = [None, None]
         self.problem_type = None
-        self.n = 30        
+        self.n = 30
 
     def __dominates(self, individual2, individual1):
         worse_than_other = self.zdt_definitions.f1(individual1) <= self.zdt_definitions.f1(individual2) and self.zdt_definitions.f2(individual1) <= self.zdt_definitions.f2(individual2)

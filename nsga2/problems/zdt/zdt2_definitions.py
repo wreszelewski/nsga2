@@ -1,3 +1,4 @@
+from nsga2 import seq
 from nsga2.problems.problem_definitions import ProblemDefinitions
 
 class ZDT2Definitions(ProblemDefinitions):
@@ -14,5 +15,6 @@ class ZDT2Definitions(ProblemDefinitions):
         h = 1 - (self.f1(individual)/g)**2
         return g*h
 
-    def perfect_pareto_front_f2(self, perfect_pareto_front_f1):
-        return map(lambda x1: 1 - x1**2, perfect_pareto_front_f1)
+    def perfect_pareto_front(self):
+        domain = seq(0, 1, 0.01)
+        return domain, map(lambda x1: 1 - x1**2, domain)

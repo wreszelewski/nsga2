@@ -1,4 +1,5 @@
 import math
+from nsga2 import seq
 from nsga2.problems.problem_definitions import ProblemDefinitions
 
 class ZDT1Definitions(ProblemDefinitions):
@@ -15,5 +16,6 @@ class ZDT1Definitions(ProblemDefinitions):
         h = 1 - math.sqrt(self.f1(individual)/g)
         return g*h
 
-    def perfect_pareto_front_f2(self, perfect_pareto_front_f1):
-        return map(lambda x1: 1 - math.sqrt(x1), perfect_pareto_front_f1)
+    def perfect_pareto_front(self):
+        domain = seq(0, 1, 0.01)
+        return domain, map(lambda x1: 1 - math.sqrt(x1), domain)
