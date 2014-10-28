@@ -15,6 +15,7 @@ class NSGA2Utils(object):
         self.num_of_tour_particips = num_of_tour_particips
         
     def fast_nondominated_sort(self, population):
+        population.fronts = []
         population.fronts.append([]) 
         for individual in population:
             individual.domination_count = 0

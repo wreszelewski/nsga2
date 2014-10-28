@@ -14,7 +14,3 @@ class Problem(object):
     def calculate_objectives(self, individual):
         
         raise NotImplementedError
-        
-    def perfect_pareto_front(self):
-
-        raise NotImplementedError
