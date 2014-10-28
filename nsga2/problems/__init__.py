@@ -2,7 +2,6 @@
 
 class Problem(object):
     
-
     def __init__(self):
         self.max_objectives = None
         self.min_objecives = None
@@ -16,3 +15,6 @@ class Problem(object):
         
         raise NotImplementedError
         
+    def perfect_pareto_front(self):
+
+        raise NotImplementedError
