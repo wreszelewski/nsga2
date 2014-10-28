@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name='nsga2',
-      version='0.1',
+      version='0.2',
       description='NSGA-II Algorithm implementation',
       author='Wojciech Reszelewski, Kamil Mielnik',
       author_email='wreszelewski@gmail.com',

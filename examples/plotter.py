@@ -21,7 +21,7 @@ class Plotter():
         computedF1 = map(lambda individual: individual.objectives[0], front)
         computedF2 = map(lambda individual: individual.objectives[1], front)
         perfectParetoFrontX1 = seq(0, 1, 0.02)
-        perfectParetoFrontX2 = map(lambda x1: 1 - sqrt(x1), perfectParetoFrontX1)
+        perfectParetoFrontX2 = map(lambda x1: 1 - x1*x1, perfectParetoFrontX1)
         axes.plot(computedF1, computedF2, 'g.')
         axes.plot(perfectParetoFrontX1, perfectParetoFrontX2, 'r.')
         axes.set_xlabel('f1')
