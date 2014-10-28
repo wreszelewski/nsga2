@@ -3,19 +3,31 @@ import matplotlib.pyplot as pyplot
 
 class Plotter():
     def __init__(self, problem):
+        self.directory = 'plots'
         self.problem = problem
 
     def plot_population_best_front(self, population, generation_number):
         if generation_number % 10 == 0:
-            directory = 'plots'
-            filename = "{}/generation{}.png".format(directory, str(generation_number))
-            self.__create_directory_if_not_exists(directory)
+            filename = "{}/generation{}.png".format(self.directory, str(generation_number))
+            self.__create_directory_if_not_exists()
             computed_pareto_front = population.fronts[0]
             self.__plot_front(computed_pareto_front, filename)
 
-    def __create_directory_if_not_exists(self, directory):
-        if not os.path.exists(directory):
-            os.makedirs(directory)
+    def plot_x_y(self, x, y, x_label, y_label, title, filename):
+        filename = "{}/{}.png".format(self.directory, filename)
+        self.__create_directory_if_not_exists()
+        figure = pyplot.figure()
+        axes = figure.add_subplot(111)
+        axes.plot(x, y, 'r')
+        axes.set_xlabel(x_label)
+        axes.set_ylabel(y_label)
+        axes.set_title(title)
+        pyplot.savefig(filename)
+        pyplot.close(figure)
+
+    def __create_directory_if_not_exists(self):
+        if not os.path.exists(self.directory):
+            os.makedirs(self.directory)
 
     def __plot_front(self, front, filename):
         figure = pyplot.figure()
