@@ -5,7 +5,7 @@ class ZDT1Metrics():
         return HV([11, 11])(front)
 
     def HVR(self, front):
-        return HVR(120 + 2/3, [11, 11])(front)
+        return HVR([11, 11], 120 + 2/3)(front)
 
 class ZDT2Metrics():
     def HV(self, front):
