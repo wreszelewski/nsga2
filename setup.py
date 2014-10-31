@@ -8,5 +8,5 @@ setup(name='nsga2',
       author='Wojciech Reszelewski, Kamil Mielnik',
       author_email='wreszelewski@gmail.com',
       url = "https://github.com/wreszelewski/nsga2",
-      packages=['nsga2', 'nsga2.problems'],
+      packages=['nsga2', 'nsga2.problems', 'nsga2.problems.zdt', 'metrics', 'metrics.problems'],
      )
